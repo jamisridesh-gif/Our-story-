@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Beautiful Journey ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4757;
+            --bg: #fff0f3;
+            --text: #333;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Header */
+        .header h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .header p { font-size: 1.2rem; color: #555; margin-bottom: 50px; }
+
+        /* Memory Grid */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .memory-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 71, 87, 0.2);
+        }
+
+        .memory-img-container {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .memory-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .memory-card:hover .memory-img {
+            transform: scale(1.05);
+        }
+
+        .memory-content {
+            padding: 25px;
+            text-align: left;
+        }
+
+        .memory-date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .memory-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .memory-desc {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .memory-card.expanded .memory-desc {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .memory-card.expanded .memory-img-container {
+            height: 200px;
+        }
+        
+        .read-more {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        /* Side-by-Side Comparison Container inside expanded card */
+        .comparison-container {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .memory-card.expanded .comparison-container {
+            display: grid;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .comparison-box {
+            text-align: center;
+        }
+
+        .comparison-box img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--primary);
+        }
+
+        .comparison-box span {
+            font-size: 0.8rem;
+            color: #555;
+            font-weight: 600;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Final Section */
+        .final-section {
+            background: var(--primary);
+            color: white;
+            padding: 50px;
+            border-radius: 25px;
+            margin-top: 50px;
+        }
+
+        .final-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .heart-beat {
+            font-size: 4rem;
+            color: white;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.3); }
+            60% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .memory-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <div class="header">
+        <h1>Ee 4 Gurtlu... 💖</h1>
+        <p>Manam kalisi nadichina prathi adugu oka andhamaina kadha. Click chesi chudandi.</p>
+    </div>
+
+    <div class="memory-grid">
+        
+        <!-- MEMORY 1: Restaurant -->
+        <div class="memory-card" onclick="toggleExpand(this)">
+            <div class="memory-img-container">
+                <img src="image_0.png" alt="Restaurant Date" class="memory-img">
+            </div>
+            <div class="memory-content">
+                <div class="memory-date">First Date - 🍽️✨</div>
+                <h3 class="memory-title">Aa Rojullo...</h3>
+                <p class="memory-desc">
+                    Manam restaurant ki vellinappudu, nenu ninnu chudagane modati sari naaku ardhamaindhi nuvvu entha special ani. Aa food, aa kaburlu, anni naaku inka gurthunnai. Nuvvu nannu choosina aa choopu... adhi oka magical moment! 😍
+                </p>
+                <span class="read-more">Click to read more...</span>
+            </div>
+        </div>
+
+        <!-- MEMORY 2: Train Journey (Zootopia Comparison Added) -->
+        <div class="memory-card" onclick="toggleExpand(this)">
+            <div class="memory-img-container">
+                <img src="image_1.png" alt="Train Journey Zootopia" class="memory-img">
+            </div>
+            <div class="memory-content">
+                <div class="memory-date">Train Journey - 🚂🦊🐰</div>
+                <h3 class="memory-title">Mana Zootopia Moment!</h3>
+                <p class="memory-desc">
+                    Asalu ee photo chudu! Zootopia lo Bunny & Fox chesinatte exact ga manam kurchunna pose[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span). Neeku chala ishtamaina ee pose real life lo manam recreate cheyadam chala special[span_8](start_span)[span_8](end_span)[span_9](start_span)[span_9](end_span)!
+                </p>
+                
+                <!-- Side-by-Side Comparison -->
+                <div class="comparison-container">
+                    <div class="comparison-box">
+                        <img src="image_1.png" alt="Meeru">
+                        <span>Mana Pose</span>
+                    </div>
+                    <div class="comparison-box">
+                        <img src="image_4.png" alt="Zootopia">
+                        <span>Zootopia Original</span>
+                    </div>
+                </div>
+
+                <span class="read-more" style="display:block; margin-top:10px;">Click to collapse/expand...</span>
+            </div>
+        </div>
+
+        <!-- MEMORY 3: Bus Journey -->
+        <div class="memory-card" onclick="toggleExpand(this)">
+            <div class="memory-img-container">
+                <img src="image_2.png" alt="Bus Journey Selfie" class="memory-img">
+            </div>
+            <div class="memory-content">
+                <div class="memory-date">Bus Ride - 🚌💕</div>
+                <h3 class="memory-title">Bus Lo Kaburlu</h3>
+                <p class="memory-desc">
+                    Oka bus journey lo manam pakkana kurchuni, bayata vastunnapudu teesukunna selfie idhi. Journey entha boring ga unna, nuvvu pakkana unte adhi oka adventure la maripothundi. Mana chinnati kaburlu, navvulu... eppatiki gurthundiipothai. 🥰
+                </p>
+                <span class="read-more">Click to read more...</span>
+            </div>
+        </div>
+
+        <!-- MEMORY 4: Movie Birthday -->
+        <div class="memory-card" onclick="toggleExpand(this)">
+            <div class="memory-img-container">
+                <img src="image_3.png" alt="Movie Birthday Oct 17" class="memory-img">
+            </div>
+            <div class="memory-content">
+                <div class="memory-date">Birthday Movie - Oct 17 🎂🎬</div>
+                <h3 class="memory-title">Tana Puttina Roju</h3>
+                <p class="memory-desc">
+                    Idi special ga nee birthday roju (Oct 17) manam movie ki vellinappudu teesukunnam. Cinema chusinanthakante, neetho aa time spend cheyadam naaku chala important. Nee aa happy face chudagane, naaku antha happy ga untundi. Love you! 🎉💖
+                </p>
+                <span class="read-more">Click to read more...</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Final Section -->
+    <div class="final-section">
+        <h2>Inka Chala Unnai, Manam Kalisi Create Cheyyalsinavi...</h2>
+        <p>Nuvvu naa life lo unnanthavaraku, prathi roju oka celebrate cheskune pandage. Happy ga undu, Ee life lo nenu eppudu neeku thoduga untaanu. 💖</p>
+        <div class="heart-beat">❤️</div>
+    </div>
+
+</div>
+
+<script>
+    function toggleExpand(card) {
+        const allCards = document.querySelectorAll('.memory-card');
+        
+        if (card.classList.contains('expanded')) {
+            card.classList.remove('expanded');
+        } else {
+            allCards.forEach(c => c.classList.remove('expanded'));
+            card.classList.add('expanded');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+</script>
+
+</body>
+</html>
